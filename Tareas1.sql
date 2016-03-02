@@ -14,16 +14,28 @@ SET SERVEROUTPUT ON
   DECLARE
     v CENTROS.ID%TYPE;
   
-  BEGIN
-    select MAX(ID) into v from CENTROS;
-    DBMS_OUTPUT.PUT_LINE('EL ID MAXIMO ES '||v);
+  BEGIN  
+    select ID into v from CENTROS WHERE ID = 4; -- MAX(ID)--
     
+    if SQL%FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('EL ID MAXIMO ES '||v);
+    end if; 
+       
+  EXCEPTION  
+    WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('No existe '||v);
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('ERROR INESPERADO'||v);
+  
+  
+  
+   
   END;
   
   --NO DEVUELVE NADA YA QUE NO TENEMOS DATOS INTRODUCIDOS CENTROS EN LA TABLA CENTROS--
   
 --3--
-
+  
   INSERT INTO CENTROS(NOMBRE,CALLE,NUMERO,CP,CIUDAD,PROVINCIA,TELEFONO)
   VALUES ('Y','A',30,'T','Y','U','I');
   
@@ -37,25 +49,28 @@ SET SERVEROUTPUT ON
 
 --4--
 
+  Select * from Centros;
+  
   DECLARE
-    v LONG := 'ABRERA';
-    r CENTROS.NOMBRE%TYPE;
-    t Integer: = 0;
-    o integer = 0;
+    v CENTROS.NOMBRE%TYPE:= 'ABRERA';
+    o Centros.ID%TYPE;
+    h Centros.ID%TYPE:= 1;
+    bol BOOLEAN := false;
+    
   BEGIN
-    select Nombre into r from CENTROS WHERE ID = 1;
-    
-    
-    LOOP
-      IF v = r then select MAX(ID) + 1 INTO t FROM CENTROS;
-      else
+      SELECT MAX(ID) INTO o FROM CENTROS;
+      While h < o loop
+        SELECT nombre from CENTROS WHERE ID = h;
+        
+        if(SQL%FOUND)
+        
   
-  
-    EXIT WHEN 
+        h := h + 1;
+      END LOOP;
   
   END;
-
-
   
+
+  --5--
   
   
