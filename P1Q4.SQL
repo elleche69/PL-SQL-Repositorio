@@ -18,14 +18,18 @@
         if v = g THEN
           bol := true;
           h := o;
-        END IF;          
+        END IF; 
+        
         h := h + 1;
       END LOOP;  
        
       IF bol =true then 
           DBMS_OUTPUT.PUT_LINE('EL ID MAXIMO ES ');
           
-      ELSE INSERT INTO CENTROS(NOMBRE,CALLE,NUMERO,CP,CIUDAD,PROVINCIA,TELEFONO) VALUES(v,null,null,null,null,null,null);
+      ELSE INSERT INTO CENTROS(NOMBRE) VALUES(v);
       END IF;        
     
   END;
+  COMMIT;
+  
+  --SE PUEDE HACER TRANQUILAMENTE CON UNA SELECT NOMBRE INTO X WHERE UPPER(NOMBRE) = 'ABRERA'--
