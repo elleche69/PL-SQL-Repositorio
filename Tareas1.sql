@@ -37,7 +37,7 @@ SET SERVEROUTPUT ON
 --3--
   
   INSERT INTO CENTROS(NOMBRE,CALLE,NUMERO,CP,CIUDAD,PROVINCIA,TELEFONO)
-  VALUES ('Y','A',30,'T','Y','U','I');
+  VALUES ('P','A',30,'T','Y','U','I');
   
   SELECT * FROM CENTROS;
   DESC CENTROS;
@@ -49,28 +49,7 @@ SET SERVEROUTPUT ON
 
 --4--
 
-  Select * from Centros;
-  
-  DECLARE
-    v CENTROS.NOMBRE%TYPE:= 'ABRERA';
-    o Centros.ID%TYPE;
-    h Centros.ID%TYPE:= 1;
-    bol BOOLEAN := false;
-    
-  BEGIN
-      SELECT MAX(ID) INTO o FROM CENTROS;
-      While h < o loop
-        SELECT nombre from CENTROS WHERE ID = h;
-        
-        if(SQL%FOUND)
-        
-  
-        h := h + 1;
-      END LOOP;
-  
-  END;
-  
 
-  --5--
+--5--
   
   
